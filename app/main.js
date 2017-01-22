@@ -21,6 +21,12 @@ class App extends React.Component {
 	    })
   	}
 
+  	/**
+  	 * <ReactCSSTransitionGroup> should contain the children. We use React.cloneElement because we want the
+  	 * the children to re-render whenever we navigate.
+  	 * Too much for me to explain this in words. Please read the docs 
+  	 * https://facebook.github.io/react/docs/animation.html
+  	 */
   	render() {
 	    let path = this.props.location.pathname;
 	    let segment = path.split('/')[2] || 'root';
@@ -43,7 +49,11 @@ class App extends React.Component {
 	  }
 };
 
-
+/*
+ * We are using hashHistory here. You can replace this with browserHistory as well for clean-urls
+ * But because we are not using server sided rendering, browserHistory will not work if you refresh
+ * the page after navigation. So for demo purposes we will use hashHistory 
+ */
 render((
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
