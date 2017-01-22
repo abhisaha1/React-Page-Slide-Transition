@@ -1,0 +1,176 @@
+//colors
+$black: #000;
+$white: #fff;
+$color_boston_blue_approx: #428bca;
+$color_astral_approx: #3071a9;
+$color_alto_approx: #ddd;
+$color_mountain_mist_approx: #929292;
+$color_dove_gray_approx: #6a6a6a;
+$red: red;
+$color_celadon_approx: #aef0ae;
+$color_green_approx: #15d915;
+
+//fonts
+$font_0: sans-serif;
+$font_1: Helvetica Neue;
+$font_2: Helvetica;
+
+html {
+    font-family: $font_0;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: $font_1, $font_2, $font_0;
+    font-size: 14px;
+    line-height: 21px;
+    color: $black;
+    background-color: $white;
+}
+a {
+    color: $color_boston_blue_approx;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    &:active {
+        color: $color_astral_approx;
+    }
+}
+.content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: $white;
+    > * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+}
+.bar {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    height: 44px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: $white;
+    border-bottom: 1px solid $color_alto_approx;
+    text-transform: uppercase;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.bar-tab {
+    bottom: 0;
+    display: table;
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    table-layout: fixed;
+    border-top: 1px solid $color_alto_approx;
+    border-bottom: 0;
+    .tab-item {
+        display: table-cell;
+        width: 1%;
+        height: 50px;
+        color: $color_mountain_mist_approx;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+.table-view {
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 15px;
+    list-style: none;
+    background-color: $white;
+}
+.table-view-cell {
+    position: relative;
+    padding: 11px 65px 11px 15px;
+    overflow: hidden;
+    margin: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid $color_dove_gray_approx;
+    &.selected {
+        background: $black;
+        color: $white;
+    }
+}
+.center-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+    text-transform: uppercase;
+}
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.details {
+    .content {
+        background: $color_celadon_approx;
+        border: 4px solid $color_green_approx;
+        border-bottom: 0;
+    }
+    .bar {
+        background: $color_green_approx;
+        .tab-item {
+            color: $white;
+        }
+    }
+}
+.item-title {
+    margin-right: 10px;
+}
+.leftSwipe-enter {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    &.leftSwipe-enter-active {
+        -webkit-transform: translate3d(0%, 0, 0);
+        transform: translate3d(0%, 0, 0);
+        -webkit-transition: -webkit-transform 500ms linear;
+        transition: -webkit-transform 500ms linear;
+        transition: transform 500ms linear;
+        transition: transform 500ms linear, -webkit-transform 500ms linear;
+        z-index: 999;
+    }
+}
+.rightSwipe-leave {
+    -webkit-transform: translate(0%);
+    transform: translate(0%);
+    &.rightSwipe-leave-active {
+        -webkit-transform: translate(100%);
+        transform: translate(100%);
+        -webkit-transition: -webkit-transform 500ms linear;
+        transition: -webkit-transform 500ms linear;
+        transition: transform 500ms linear;
+        transition: transform 500ms linear, -webkit-transform 500ms linear;
+        z-index: 999;
+    }
+}
+.bar-nav ~ .content {
+    padding-top: 44px;
+}
